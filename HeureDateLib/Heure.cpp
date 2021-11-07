@@ -16,23 +16,5 @@ void DateHeure::Heure::print() const
 
 bool DateHeure::Heure::operator>(const Heure& H) const
 {
-
-	if (this->H > H.H)
-		return true;
-	else if (this->H < H.H)
-		return false;
-	else
-	{
-		if (this->M > H.M)
-			return true;
-		else if (this->M < H.M)
-			return false;
-		else
-		{
-			if (this->S > H.S)
-				return true;
-			else
-				return false;
-		}
-	}
+	return (this->H == H.H) ? (this->M == H.M) ? (this->S > H.S) : (this->M > H.M) : (this->H > H.H);
 }

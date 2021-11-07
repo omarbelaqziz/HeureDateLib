@@ -34,32 +34,10 @@ void DateHeure::DateH::print() const
 
 bool DateHeure::DateH::operator>(const DateH& D) const
 {
-	if (this->annee > D.annee)
-		return true;
-	else if (this->annee < D.annee)
-		return false;
-	else
-	{
-		if (this->mois > D.mois)
-			return true;
-		else if (this->mois < D.mois)
-			return false;
-		else
-		{
-			if (this->jour > D.jour)
-				return true;
-			else if (this->jour < D.jour)
-				return false;
-			else
-				return this->Heure::operator>(D);
-		}
-	}
-	return false;
+	return (this->annee == D.annee) ? (this->mois == D.mois) ? (this->jour == D.jour) ? this->Heure::operator>(D) : (this->jour > D.jour) : (this->mois > D.mois) : (this->annee > D.annee);
 }
 
 bool DateHeure::DateH::isLeap(int a)
 {
-	bool res;
-	res = (a % 100 == 0) ? (a % 400 == 0) ? true : false : (a % 4 == 0) ? true : false;
-	return res;
+	return (a % 100 == 0) ? (a % 400 == 0) ? true : false : (a % 4 == 0) ? true : false;	
 }
